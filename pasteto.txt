@@ -1,0 +1,15 @@
+Sub pasteTo(path As String, sheetname As String, rng As String)
+    Dim dstSheet As Worksheet
+    Set dstSheet = ThisWorkbook.Worksheets(1)
+
+    Dim srcBook As Workbook
+    Set srcBook = Workbooks.Open(path)
+    Dim srcSheet As Worksheet
+    Set srcSheet = srcBook.Worksheets(sheetname)
+
+    srcSheet.ChartObjects(1).Copy
+    dstSheet.Paste Destination:=dstSheet.Range(rng)
+    
+    srcBook.Close False
+
+End Sub
